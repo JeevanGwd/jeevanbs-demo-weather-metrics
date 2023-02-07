@@ -34,9 +34,9 @@ public class WeatherMetricController {
 
     @GetMapping(value ="/sensors" , produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity getStatistics(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> startDate,
-                                        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime>  endDate,
-                                        @RequestParam(defaultValue = "true", required = false) Boolean humidity){
+    public ResponseEntity getStatisticsOfAllSensors(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime> startDate,
+                                                    @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Optional<LocalDateTime>  endDate,
+                                                    @RequestParam(defaultValue = "true", required = false) Boolean humidity){
         return weatherMetricService.getStatistics(startDate, endDate, humidity);
     }
 }
