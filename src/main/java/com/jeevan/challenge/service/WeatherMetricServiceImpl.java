@@ -50,9 +50,10 @@ public class WeatherMetricServiceImpl implements WeatherMetricService {
 
         GroupOperation groupOperation = getGroupOperation(humidity);
 
-        //Aggregation result
+        //Aggregation
         Aggregation aggregation = Aggregation.newAggregation(timeStampMatch, groupOperation);
 
+        //Result
         List<Statistics> aggregate = mongoTemplate.aggregate(aggregation, WeatherMetric.class, Statistics.class).getMappedResults();
 
         return ResponseEntity.ok().body(aggregate);
@@ -70,9 +71,10 @@ public class WeatherMetricServiceImpl implements WeatherMetricService {
         //Group Operation for Grouping based on SensorId and calculating Statistics
         GroupOperation groupOperation = getGroupOperation(true);
 
-        //Aggregation result
+        //Aggregation
         Aggregation aggregation = Aggregation.newAggregation(matchOperation, groupOperation);
 
+        //Result
         List<Statistics> aggregate = mongoTemplate.aggregate(aggregation, WeatherMetric.class, Statistics.class).getMappedResults();
         return ResponseEntity.ok().body(aggregate);
     }
