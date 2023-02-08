@@ -31,3 +31,13 @@ Steps for running the project:
 6. Open the swagger UI screen using the following URL - "http://localhost:8091/swagger-ui/#/weather-metric-controller". 
 
     Note: OnStart of Application initial data is uploaded from a file (main\resources\dbdata\test_data.json);
+
+API's Available:
+1. POST - /weather-metric/save
+   - To persist the new weather to the DB.
+2. GET - /weather-metric/sensors
+   - To fetch statistics of all the sensors for a specified time range or if time range is not specified statistics of past 3 days is fetched.
+   - humidity stats can be omitted if required by setting the param to false.
+3. GET - /weather-metric/sensors/{id}
+   - To fetch stats of a single sensor for a specified time range or if time range is not specified statistics of past 3 days is fetched.
+   - id param is mandatory

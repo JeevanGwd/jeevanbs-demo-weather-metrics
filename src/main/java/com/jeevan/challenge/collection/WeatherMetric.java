@@ -2,6 +2,7 @@ package com.jeevan.challenge.collection;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -25,15 +26,15 @@ public class WeatherMetric {
     @Id
     private String id;
 
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonProperty("timeStamp")
-    private LocalDateTime timeStamp;
-
     @JsonProperty("sensorId")
     @NotBlank(message ="SensorID is required")
     @NotNull(message ="SensorID is required")
     public String sensorId;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonProperty("timeStamp")
+    private LocalDateTime timeStamp;
 
     @JsonProperty("temperature")
     public Double temperature;
